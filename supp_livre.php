@@ -8,7 +8,7 @@
 <?php
 $code=(integer)$_GET['del'];
 include('connexion.php');
-$idcom=connect('bibliothèque');
+$idcom=connect('bibliothequedb');
 $req="DELETE document , livre FROM document INNER JOIN livre WHERE document.code=
 livre.code and document.code= $code";
 $res=$idcom->exec($req);

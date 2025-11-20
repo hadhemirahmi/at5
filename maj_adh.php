@@ -7,12 +7,12 @@
 <body>
 <?php
 include('connexion.php');
-$idcom=connect('bibliothèque');
+$idcom=connect('bibliothequedb');
 //isset — Détermine si une variable est déclarée et est différente de null
 if(!isset($_POST['modif'])) {
 $code=(integer)$_POST['code'];
 // Requête SQL
-$requete="SELECT * FROM adherent WHERE idadherent='$code' ";
+$requete="SELECT * FROM adherent WHERE 	idAdherent ='$code' ";
 
 $result=$idcom->query($requete);
 //PDO::FETCH_NUM : retourne un tableau indexé

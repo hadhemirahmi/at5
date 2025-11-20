@@ -123,7 +123,7 @@ else if($_POST["type"]=="revue"){
 if(isset($_POST['addbook'])){
 if (isset($_POST['code'], $_POST['titre'], $_POST['auteur'], $_POST['nbpages'])){
 include("connexion.php");
-$idconnection=connect('bibliothèque');
+$idconnection=connect('bibliothequedb');
 $code=$idconnection->quote($_POST['code']);
 $titre=$idconnection->quote($_POST['titre']);
 $auteur=$idconnection->quote($_POST['auteur']);
@@ -149,7 +149,7 @@ $idconnection=null;
 if(isset($_POST['adddict'])){
 if (isset($_POST['code'], $_POST['titre'], $_POST['langue'])){
 include("connexion.php");
-$idconnection=connect('bibliothèque');
+$idconnection=connect('bibliothequebd');
 $code=$idconnection->quote($_POST['code']);
 $titre=$idconnection->quote($_POST['titre']);
 $langue=$idconnection->quote($_POST['langue']);

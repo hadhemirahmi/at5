@@ -43,7 +43,7 @@ $type=$_POST['type'];
 //Livre
 if($_POST["type"]=="livre"){
 include("connexion.php");
-$idcom=connect("bibliothèque");
+$idcom=connect("bibliothequedb");
 $requete="SELECT d.code,d.titre,d.etat,l.auteur,l.nbredepage FROM document d ,livre l
 where d.code=l.code ";
 $result=$idcom->query($requete);

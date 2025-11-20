@@ -26,7 +26,7 @@
 
 <?php
 include("connexion.php");
-$idcom = connect('bibliothequebd');
+$idcom = connect('bibliothequedb');
 
 
 // Vérifie que le formulaire est soumis avec les 3 champs
@@ -36,7 +36,7 @@ if (isset($_POST['nom'], $_POST['prenom'], $_POST['ville'])) {
     $prenom = $idcom->quote($_POST['prenom']);
     $ville = $idcom->quote($_POST['ville']);
 
-    $requete = "INSERT INTO adherant (idAdherant,nom, prenom, ville) VALUES (Null,$nom, $prenom, $ville)";
+    $requete = "INSERT INTO adherent (	idAdherent ,nom, prenom, ville) VALUES (Null,$nom, $prenom, $ville)";
     $nblignes = $idcom->exec($requete);
 
     if ($nblignes != 1) {

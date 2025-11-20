@@ -1,6 +1,6 @@
 <?php
 include('connexion.php');
-$idcom=connect('bibliothèque'); // Connexion unique, ne pas fermer avant UPDATE
+$idcom=connect('bibliothequedb'); // Connexion unique, ne pas fermer avant UPDATE
 if(!isset($_POST['modif'])) {
 $code=(integer)$_GET['edit'];
 $requete="SELECT * FROM document d,livre l WHERE d.code=l.code and d.code='$code' ";

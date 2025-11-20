@@ -7,10 +7,10 @@
 <body>
 <?php
 include('connexion.php');
-$idcom=connect('bibliothèque');
+$idcom=connect('bibliothequedb');
 if (!empty($_POST['code']) && !empty($_POST['code'])) {
 $code=(integer)$_POST['code'];
-$requete="DELETE FROM adherent WHERE idadherent='$code' ";
+$requete="DELETE FROM adherent WHERE idAdherent ='$code' ";
 $nblignes=$idcom->exec($requete);
 if($nblignes==1)
 echo "succès";

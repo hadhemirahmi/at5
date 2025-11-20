@@ -17,8 +17,8 @@
             
 <?php
 include("connexion.php");
-$idcom = connect('bibliotheque');
-$requete = "SELECT * FROM adherant";
+$idcom = connect('bibliothequedb');
+$requete = "SELECT * FROM adherent";
 $resultat = $idcom->query($requete);
 if (!$resultat){
     $mess_erreur = $idcom->errorInfo();
@@ -37,7 +37,7 @@ else{
     //afichage des valeurs du tableau
     echo"<tr>";
     do{
-        echo"<td>",$ligne->idAdherant,"</td><br><td>",
+        echo"<td>",$ligne->idAdherent,"</td><br><td>",
         $ligne->nom,"</td><br><td>",$ligne->prenom,
         "</td><br><td>",$ligne->ville,"</td></tr>";
     }while($ligne=$resultat->fetchObject());
