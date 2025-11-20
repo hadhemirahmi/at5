@@ -115,7 +115,87 @@ else if($_POST["type"]=="revue"){
 </table>
 </fieldset>
 </form>
+
 <?php
+}
+}
+//n'oublier pas script dans le mm fichier $POST_SELF
+if(isset($_POST['addbook'])){
+if (isset($_POST['code'], $_POST['titre'], $_POST['auteur'], $_POST['nbpages'])){
+include("connexion.php");
+$idconnection=connect('bibliothèque');
+$code=$idconnection->quote($_POST['code']);
+$titre=$idconnection->quote($_POST['titre']);
+$auteur=$idconnection->quote($_POST['auteur']);
+$nbpages=$idconnection->quote($_POST['nbpages']);
+// Requête SQL
+$requete1="INSERT INTO document VALUES($code,$titre,DEFAULT)";
+$requete2="INSERT INTO livre VALUES($code,$auteur,$nbpages)";
+$res1=$idconnection->exec($requete1);
+$res2=$idconnection->exec($requete2);
+if($res1!=1 || $res2!=1) {
+$mess_erreur=$idconnection->errorInfo();
+echo "Insertion impossible, code", $idconnection->errorCode(),$mess_erreur[2];
+echo "<script type=\"text/javascript\">
+alert('Erreur : ".$idconnection->errorCode()."')</script>";
+}
+else {
+echo "<script type=\"text/javascript\">
+alert('Le livre est ajouté')</script>";
+$idconnection=null;
+}
+}
+}
+if(isset($_POST['adddict'])){
+if (isset($_POST['code'], $_POST['titre'], $_POST['langue'])){
+include("connexion.php");
+$idconnection=connect('bibliothèque');
+$code=$idconnection->quote($_POST['code']);
+$titre=$idconnection->quote($_POST['titre']);
+$langue=$idconnection->quote($_POST['langue']);
+// Requête SQL
+$requete1="INSERT INTO document VALUES($code,$titre,'disponible')";
+$requete2="INSERT INTO dictionnaire VALUES($code,$langue)";
+$res1=$idconnection->exec($requete1);
+$res2=$idconnection->exec($requete2);
+if($res1!=1 || $res2!=1) {
+$mess_erreur=$idconnection->errorInfo();
+echo "Insertion impossible, code", $idconnection->errorCode(),$mess_erreur[2];
+echo "<script type=\"text/javascript\">
+alert('Erreur : ".$idconnection->errorCode()."')</script>";
+}
+else {
+
+echo "<script type=\"text/javascript\">
+alert('Le dictionnaire est ajouté')</script>";
+$idconnection=null;
+}
+}
+}
+if(isset($_POST['addrevue'])){
+if (isset($_POST['code'], $_POST['titre'], $_POST['mois'],$_POST['annee'])){
+include("connexion.php");
+$idconnection=connect('bibliothèque');
+$code=$idconnection->quote($_POST['code']);
+$titre=$idconnection->quote($_POST['titre']);
+$mois=$idconnection->quote($_POST['mois']);
+$annee=$idconnection->quote($_POST['annee']);
+// Requête SQL
+$requete1="INSERT INTO document VALUES($code,$titre,'disponible')";
+$requete2="INSERT INTO revue VALUES($code,$mois,$annee)";
+$res1=$idconnection->exec($requete1);
+$res2=$idconnection->exec($requete2);
+if($res1!=1 || $res2!=1) {
+$mess_erreur=$idconnection->errorInfo();
+echo "Insertion impossible, code", $idconnection->errorCode(),$mess_erreur[2];
+echo "<script type=\"text/javascript\">
+alert('Erreur : ".$idconnection->errorCode()."')</script>";
+}
+else {
+echo "<script type=\"text/javascript\">
+alert('Le revue est ajouté')</script>";
+$idconnection=null;
+}
 }
 }
 ?>
