@@ -37,11 +37,9 @@ else{
     //afichage des valeurs du tableau
     echo"<tr>";
     do{
-        echo"<td>",$ligne->idAdherant,"</td>";
-        echo"<td>",$ligne->nom,"</td>";
-        echo"<td>",$ligne->prenom,"</td>";
-        echo"<td>",$ligne->ville,"</td>";
-        echo"</tr>";
+        echo"<td>",$ligne->idAdherant,"</td><br><td>",
+        $ligne->nom,"</td><br><td>",$ligne->prenom,
+        "</td><br><td>",$ligne->ville,"</td></tr>";
     }while($ligne=$resultat->fetchObject());
     echo"</table>";
 
